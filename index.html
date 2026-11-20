@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VOXEL Mobile — 3D Smartfonlar Do'koni</title>
+    <meta
+      name="description"
+      content="3D animatsiyali zamonaviy smartfonlar onlayn do'koni va Telegram bot orqali avtomatik buyurtma qabul qilish tizimi."
+    />
+    <meta property="og:title" content="VOXEL Mobile — 3D Smartfonlar Do'koni" />
+    <meta
+      property="og:description"
+      content="3D animatsiyali zamonaviy smartfonlar onlayn do'koni va Telegram bot orqali avtomatik buyurtma qabul qilish tizimi."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <!-- Top Bar: Strictly 3 Zones -->
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a href="#vitrin" class="brand-wordmark" aria-label="VOXEL Mobile bosh sahifa">VOXEL</a>
+
+        <nav class="main-nav" aria-label="Asosiy navigatsiya">
+          <a href="#vitrin" class="nav-link">3D Vitrin</a>
+          <a href="#katalog" class="nav-link">Katalog</a>
+          <a href="#kafolat" class="nav-link">Afzalliklar</a>
+          <button type="button" class="nav-link nav-link-btn" id="open-orders-btn">Buyurtmalar</button>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" class="btn-primary header-cart-btn" id="open-cart-btn" aria-label="Savatni ochish">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+              <path d="M3 6h18"></path>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Savat</span>
+            <span class="cart-count" id="header-cart-count">0</span>
+          </button>
+
+          <button
+            type="button"
+            class="mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            aria-label="Menyuni ochish"
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" y1="7" x2="20" y2="7"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="17" x2="20" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
+        <div class="container mobile-nav-links">
+          <a href="#vitrin" class="mobile-nav-item">3D Vitrin</a>
+          <a href="#katalog" class="mobile-nav-item">Smartfonlar katalogi</a>
+          <a href="#kafolat" class="mobile-nav-item">Afzalliklar va kafolat</a>
+          <button type="button" class="mobile-nav-item mobile-nav-btn" id="mobile-orders-btn">Mening buyurtmalarim</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section 1: Hero with Interactive 3D Flagship Stage -->
+      <section class="hero-section" id="vitrin">
+        <div class="hero-ambient" id="hero-ambient" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="hero-kicker">Toshkent Flagman Do'koni · Rasmiy IMEI · 2026 Kolleksiya</p>
+            <h1 class="hero-title">Yangi avlod smartfonlarini 3D ko'rinishda kashf eting</h1>
+            <p class="hero-subtitle">
+              Har bir qurilmani interaktiv 3D maydonda aylantirib ko'ring, xotira va rangni tanlang hamda bir bosishda buyurtma bering — buyurtmangiz Telegram kanalimizga avtomatik uzatiladi.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="#katalog" class="btn-primary btn-lg">Katalogni ko'rish</a>
+              <button type="button" class="btn-secondary btn-lg" id="hero-inspect-btn">3D Studiyada ochish</button>
+            </div>
+
+            <div class="hero-metrics" aria-label="Asosiy afzalliklar">
+              <div class="metric-item">
+                <span class="metric-value">12 oy</span>
+                <span class="metric-label">Rasmiy kafolat</span>
+              </div>
+              <div class="metric-divider" aria-hidden="true"></div>
+              <div class="metric-item">
+                <span class="metric-value">2 soat</span>
+                <span class="metric-label">Toshkentda yetkazish</span>
+              </div>
+              <div class="metric-divider" aria-hidden="true"></div>
+              <div class="metric-item">
+                <span class="metric-value">100%</span>
+                <span class="metric-label">Original IMEI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive 3D Stage -->
+          <div class="hero-stage-wrap">
+            <div class="stage-controls-top">
+              <span class="stage-hint">Sichqoncha yoki barmoq bilan 3D aylantiring</span>
+              <button type="button" class="stage-toggle-btn" id="hero-orbit-toggle" aria-pressed="true">
+                Avto 3D: Yoqilgan
+              </button>
+            </div>
+
+            <div class="hero-3d-viewport" id="hero-3d-viewport" aria-label="Interaktiv 3D smartfon vitrinasi">
+              <div class="hero-3d-floor-shadow" id="hero-3d-shadow" aria-hidden="true"></div>
+
+              <div class="hero-3d-rig" id="hero-3d-rig">
+                <!-- Extruded 3D thickness layers -->
+                <div class="phone-layer-depth layer-d3" aria-hidden="true"></div>
+                <div class="phone-layer-depth layer-d2" aria-hidden="true"></div>
+                <div class="phone-layer-depth layer-d1" aria-hidden="true"></div>
+
+                <!-- Main Phone Showcase Face -->
+                <div class="hero-phone-face">
+                  <div class="hero-phone-photo-wrap">
+                    <img
+                      id="hero-phone-img"
+                      src="/src/assets/images/phone_titanium_pro_1795170842888.jpg"
+                      alt="iPhone 16 Pro Max — Sahro Titanium"
+                      class="hero-phone-img"
+                      referrerpolicy="no-referrer"
+                      draggable="false"
+                    />
+                    <div class="hero-phone-glare" id="hero-phone-glare" aria-hidden="true"></div>
+                  </div>
+
+                  <!-- Floating 3D Depth Spec Strip -->
+                  <div class="hero-3d-hud">
+                    <div class="hud-left">
+                      <span class="hud-brand" id="hero-phone-brand">Apple · A18 Pro</span>
+                      <strong class="hud-name" id="hero-phone-name">iPhone 16 Pro Max</strong>
+                    </div>
+                    <div class="hud-right">
+                      <span class="hud-price" id="hero-phone-price">$1 390</span>
+                      <button type="button" class="hud-buy-btn" id="hero-quick-buy">Buyurtma</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Hero Flagship Switcher -->
+            <div class="hero-switcher" id="hero-switcher" role="tablist" aria-label="Vitrin smartfonini tanlash">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Smartfonlar Katalogi -->
+      <section class="catalog-section" id="katalog">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Flagman Modellar · 3D Interaktiv Ko'rinish</p>
+              <h2 class="section-title">Smartfonlar katalogi</h2>
+            </div>
+
+            <div class="catalog-tools">
+              <div class="search-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <input
+                  type="search"
+                  id="search-input"
+                  class="search-input"
+                  placeholder="Model yoki brend qidirish..."
+                  aria-label="Smartfon qidirish"
+                />
+              </div>
+
+              <select id="sort-select" class="sort-select" aria-label="Saralash">
+                <option value="featured">Ommabop</option>
+                <option value="price-asc">Avval arzonlari</option>
+                <option value="price-desc">Avval qimmatlari</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Interactive Category Filter Bar -->
+          <div class="filter-bar" id="filter-bar" role="tablist" aria-label="Brendlar bo'yicha saralash">
+            <!-- Populated by app.js -->
+          </div>
+
+          <!-- 3D Product Grid -->
+          <div class="product-grid" id="product-grid">
+            <!-- Populated by app.js -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state" id="catalog-empty" hidden>
+            <p class="empty-title">Mos keladigan smartfon topilmadi</p>
+            <p class="empty-desc">Qidiruv so'zini o'zgartiring yoki barcha brendlarni ko'ring.</p>
+            <button type="button" class="btn-secondary" id="reset-filters-btn">Filtrlarni tozalash</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Craftsmanship & Guarantee -->
+      <section class="guarantee-section" id="kafolat">
+        <div class="container">
+          <div class="section-head section-head-compact">
+            <div>
+              <p class="section-kicker">Ishonch va Servis</p>
+              <h2 class="section-title">Nega aynan VOXEL Mobile?</h2>
+            </div>
+            <p class="section-aside">
+              Har bir buyurtma real vaqtda rasmiy Telegram kanalimizga tushadi va shaxsiy menejer tomonidan tasdiqlanadi.
+            </p>
+          </div>
+
+          <div class="guarantee-grid">
+            <article class="guarantee-card">
+              <span class="guarantee-index">01</span>
+              <h3 class="guarantee-title">Rasmiy IMEI va 1 yil kafolat</h3>
+              <p class="guarantee-text">
+                Barcha smartfonlar zavod qadog'ida, O'zbekistonda rasmiy IMEI ro'yxatidan o'tgan va to'liq 12 oylik servis kafolati bilan taqdim etiladi.
+              </p>
+            </article>
+
+            <article class="guarantee-card">
+              <span class="guarantee-index">02</span>
+              <h3 class="guarantee-title">Tezkor yetkazib berish</h3>
+              <p class="guarantee-text">
+                Toshkent shahri bo'ylab 2 soat ichida bepul kuryer yetkazib beradi. Viloyatlarga esa 24 soat ichida sug'urtalangan pochta orqali jo'natamiz.
+              </p>
+            </article>
+
+            <article class="guarantee-card">
+              <span class="guarantee-index">03</span>
+              <h3 class="guarantee-title">Telegram orqali jonli nazorat</h3>
+              <p class="guarantee-text">
+                Saytdan buyurtma berganingiz zahoti ma'lumotlar avtomatik tarzda Telegram bot orqali kanalimizga yuboriladi va operator 5 daqiqada siz bilan bog'lanadi.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Section 4: Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand-col">
+          <a href="#vitrin" class="brand-wordmark">VOXEL</a>
+          <p class="footer-note">Toshkent shahri, Amir Temur shoh ko'chasi 108 · Har kuni 09:00 – 21:00</p>
+        </div>
+        <div class="footer-meta-col">
+          <span class="footer-contact">+998 71 200 45 00</span>
+          <span class="footer-sep" aria-hidden="true">·</span>
+          <span class="footer-copy">© 2026 VOXEL Mobile</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 3D Studio Product Inspector Modal -->
+    <div class="modal-backdrop" id="studio-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="studio-modal-title">
+      <div class="modal-dialog studio-dialog">
+        <button type="button" class="modal-close-btn" id="studio-close-btn" aria-label="Yopish">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+
+        <div class="studio-layout">
+          <!-- Left: Interactive 3D Inspector -->
+          <div class="studio-stage-col">
+            <div class="studio-stage-header">
+              <span class="studio-angle-readout" id="studio-angle-readout">3D Burchak: X 0° · Y 0°</span>
+              <div class="studio-presets">
+                <button type="button" class="preset-btn is-active" data-preset="front">Old</button>
+                <button type="button" class="preset-btn" data-preset="angle">3D Yon</button>
+                <button type="button" class="preset-btn" data-preset="top">Yuqori</button>
+                <button type="button" class="preset-btn" data-preset="spin">Aylantirish</button>
+              </div>
+            </div>
+
+            <div class="studio-3d-viewport" id="studio-3d-viewport">
+              <div class="studio-3d-glow" id="studio-3d-glow" aria-hidden="true"></div>
+              <div class="studio-3d-rig" id="studio-3d-rig">
+                <div class="studio-depth-layer sd-3" aria-hidden="true"></div>
+                <div class="studio-depth-layer sd-2" aria-hidden="true"></div>
+                <div class="studio-depth-layer sd-1" aria-hidden="true"></div>
+                <div class="studio-phone-face">
+                  <img id="studio-phone-img" src="" alt="" class="studio-phone-img" referrerpolicy="no-referrer" draggable="false" />
+                  <div class="studio-phone-glare" id="studio-phone-glare" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-zoom-bar">
+              <label for="studio-zoom-range" class="zoom-label">Masshtab</label>
+              <input type="range" id="studio-zoom-range" class="zoom-range" min="0.85" max="1.25" step="0.01" value="1" />
+              <span class="zoom-value" id="studio-zoom-value">100%</span>
+            </div>
+          </div>
+
+          <!-- Right: Purchase Module -->
+          <div class="studio-info-col">
+            <p class="studio-meta" id="studio-meta">Apple · Mavjud</p>
+            <h2 class="studio-title" id="studio-modal-title">iPhone 16 Pro Max</h2>
+            <p class="studio-desc" id="studio-desc"></p>
+
+            <div class="studio-price-row">
+              <span class="studio-price-usd" id="studio-price-usd">$1 390</span>
+              <span class="studio-price-uzs" id="studio-price-uzs">17 792 000 so'm</span>
+            </div>
+
+            <div class="config-group">
+              <span class="config-label">Rang: <strong id="studio-selected-color"></strong></span>
+              <div class="color-options" id="studio-color-options"></div>
+            </div>
+
+            <div class="config-group">
+              <span class="config-label">Ichki xotira</span>
+              <div class="storage-options" id="studio-storage-options"></div>
+            </div>
+
+            <dl class="specs-list" id="studio-specs-list"></dl>
+
+            <div class="studio-action-row">
+              <button type="button" class="btn-secondary btn-lg studio-add-btn" id="studio-add-cart-btn">Savatga qo'shish</button>
+              <button type="button" class="btn-primary btn-lg studio-buy-btn" id="studio-buy-now-btn">Tezkor buyurtma</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide-Over Shopping Cart Drawer -->
+    <div class="drawer-backdrop" id="cart-drawer" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+      <aside class="drawer-panel">
+        <div class="drawer-header">
+          <div>
+            <h2 class="drawer-title" id="cart-drawer-title">Savat</h2>
+            <p class="drawer-subtitle" id="cart-drawer-subtitle">0 ta mahsulot tanlangan</p>
+          </div>
+          <button type="button" class="modal-close-btn drawer-close" id="cart-close-btn" aria-label="Savatni yopish">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="drawer-body" id="cart-items-container">
+          <!-- Populated by app.js -->
+        </div>
+
+        <div class="drawer-footer" id="cart-footer" hidden>
+          <div class="cart-summary-line">
+            <span>Yetkazib berish</span>
+            <span class="text-positive">Bepul</span>
+          </div>
+          <div class="cart-summary-total">
+            <span>Jami summa</span>
+            <div class="cart-total-stack">
+              <strong id="cart-total-usd">$0</strong>
+              <span id="cart-total-uzs">0 so'm</span>
+            </div>
+          </div>
+          <button type="button" class="btn-primary btn-lg btn-full" id="proceed-checkout-btn">
+            Buyurtmani rasmiylashtirish
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Checkout & Automatic Telegram Order Modal -->
+    <div class="modal-backdrop" id="checkout-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+      <div class="modal-dialog checkout-dialog">
+        <button type="button" class="modal-close-btn" id="checkout-close-btn" aria-label="Yopish">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+
+        <!-- Form View -->
+        <div id="checkout-form-view">
+          <p class="section-kicker">Avtomatik Telegram Buyurtma</p>
+          <h2 class="checkout-title" id="checkout-modal-title">Buyurtmani rasmiylashtirish</h2>
+          <p class="checkout-lead">Ma'lumotlaringizni kiriting — buyurtma darhol rasmiy Telegram kanalimizga yuboriladi.</p>
+
+          <form id="checkout-form" class="checkout-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="customer-name" class="form-label">Ism va familiya *</label>
+                <input
+                  type="text"
+                  id="customer-name"
+                  name="name"
+                  class="form-input"
+                  placeholder="Masalan: Jasur Karimov"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="customer-phone" class="form-label">Telefon raqami *</label>
+                <input
+                  type="tel"
+                  id="customer-phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder="+998 90 123 45 67"
+                  required
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="customer-region" class="form-label">Viloyat / Shahar *</label>
+                <select id="customer-region" name="region" class="form-input" required>
+                  <option value="Toshkent shahri">Toshkent shahri</option>
+                  <option value="Toshkent viloyati">Toshkent viloyati</option>
+                  <option value="Samarqand">Samarqand</option>
+                  <option value="Buxoro">Buxoro</option>
+                  <option value="Andijon">Andijon</option>
+                  <option value="Farg'ona">Farg'ona</option>
+                  <option value="Namangan">Namangan</option>
+                  <option value="Qashqadaryo">Qashqadaryo</option>
+                  <option value="Surxondaryo">Surxondaryo</option>
+                  <option value="Xorazm">Xorazm</option>
+                  <option value="Navoiy">Navoiy</option>
+                  <option value="Jizzax">Jizzax</option>
+                  <option value="Sirdaryo">Sirdaryo</option>
+                  <option value="Qoraqalpog'iston">Qoraqalpog'iston</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="customer-payment" class="form-label">To'lov usuli *</label>
+                <select id="customer-payment" name="payment" class="form-input" required>
+                  <option value="Naqd pul (yetkazib berganda)">Naqd pul (yetkazib berganda)</option>
+                  <option value="Click / Payme / Uzcard / Humo">Click / Payme / Uzcard / Humo</option>
+                  <option value="Muddatli to'lov (0% · 12 oy)">Muddatli to'lov (0% · 12 oy)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="customer-address" class="form-label">Yetkazib berish manzili *</label>
+              <input
+                type="text"
+                id="customer-address"
+                name="address"
+                class="form-input"
+                placeholder="Tuman, ko'cha nomi, uy va xonadon raqami"
+                required
+                autocomplete="street-address"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="customer-note" class="form-label">Qo'shimcha izoh (ixtiyoriy)</label>
+              <input
+                type="text"
+                id="customer-note"
+                name="note"
+                class="form-input"
+                placeholder="Masalan: Soat 18:00 dan keyin yetkazib bering"
+              />
+            </div>
+
+            <!-- Itemized Summary -->
+            <div class="checkout-summary">
+              <div class="checkout-summary-head">
+                <span>Tanlangan mahsulotlar</span>
+                <span id="checkout-item-count">0 ta</span>
+              </div>
+              <ul class="checkout-items-list" id="checkout-items-list"></ul>
+              <div class="checkout-summary-foot">
+                <span>To'lov summasi</span>
+                <div class="cart-total-stack">
+                  <strong id="checkout-total-usd">$0</strong>
+                  <span id="checkout-total-uzs">0 so'm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-error-box" id="checkout-error-box" hidden role="alert"></div>
+
+            <button type="submit" class="btn-primary btn-lg btn-full" id="checkout-submit-btn">
+              Buyurtmani tasdiqlash va yuborish
+            </button>
+          </form>
+        </div>
+
+        <!-- Receipt / Success View -->
+        <div id="checkout-success-view" class="checkout-success" hidden>
+          <div class="success-icon-wrap" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <p class="section-kicker" id="receipt-status-kicker">Telegram kanalga yuborildi</p>
+          <h2 class="checkout-title" id="receipt-order-id">Buyurtma #VX-1001 qabul qilindi</h2>
+          <p class="checkout-lead" id="receipt-message">
+            Buyurtma tafsilotlari Telegram bot orqali kanalimizga avtomatik uzatildi. Operatorimiz 5 daqiqa ichida siz bilan bog'lanadi.
+          </p>
+
+          <dl class="receipt-details" id="receipt-details"></dl>
+
+          <div class="receipt-actions">
+            <button type="button" class="btn-primary btn-lg btn-full" id="receipt-done-btn">Xaridni davom ettirish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Orders Modal -->
+    <div class="modal-backdrop" id="orders-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="orders-modal-title">
+      <div class="modal-dialog orders-dialog">
+        <button type="button" class="modal-close-btn" id="orders-close-btn" aria-label="Yopish">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+        <p class="section-kicker">Buyurtmalar tarixi</p>
+        <h2 class="checkout-title" id="orders-modal-title">Mening buyurtmalarim</h2>
+        <div class="orders-list" id="orders-list"></div>
+      </div>
+    </div>
+
+    <!-- Subtle Toast Container -->
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

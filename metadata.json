@@ -1,0 +1,6 @@
+{
+  "name": "VOXEL Mobile — 3D Smartfonlar Do'koni",
+  "description": "3D animatsiyali zamonaviy smartfonlar onlayn do'koni va Telegram bot orqali avtomatik buyurtma qabul qilish tizimi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
